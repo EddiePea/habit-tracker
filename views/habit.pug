@@ -1,0 +1,44 @@
+extends layout
+
+block main
+  section#habits
+    header
+      h2= habit.title
+      ul.button-group
+        li
+          form.mark_achieved(action=`/habits/${habit.id}/mark-achieved` method="post")
+            button.check(type="submit") Mark Achieved
+        li
+          form(action=`/habits/${habit.id}/edit` method="get")
+            button.edit(type="submit") Update
+        li
+          form.delete(action=`/habits/${habit.id}/destroy` method="post")
+            button.delete(type="submit") Delete
+    
+    ul#habits
+      li This is a #{habit.getCategory()} goal 
+      li I will #{habit.getTitle()} #{habit.getGoalUnits()} #{habit.getUnit()} each day 
+      li Today I've achieved #{habit.getAchievedUnits()} #{habit.getUnit()} so far 
+      span.score Today's score: #{habit.getScore()}% 
+    
+    if notes 
+      section.notes 
+        h3 Notes: 
+        p #{habit.getNotes()};
+
+    form(action=`/habits/${habit.id}/notes` method="post")
+      dl
+        dt
+          label(for="notes") Notes:
+        dd
+          input(type="text"
+                name="notes"
+                id="notes"
+                placeholder="How did this habit go today?"
+                value=notes)
+      fieldset.actions
+        button Add
+
+block headerLinks
+  .actions
+    a.list(href="/habits") All Habits

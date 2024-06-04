@@ -1,0 +1,55 @@
+extends layout
+
+block main
+  form(action="/habits" method="post")
+    dl
+      dt
+        label(for="habitTitle") Enter the title for your new list:
+      dd
+        input(type="text"
+              id="habitTitle"
+              name="habitTitle"
+              placeholder="e.g. do yoga"
+              value=habitTitle)
+
+    dl 
+      dt
+        label(for="category") Enter the category for this habit:
+      dd 
+        input(type="text"
+              id="category"
+              name="category"
+              placeholder="e.g. diet, exercise, mindfulness"
+              value=category)
+    dl 
+      dt 
+        label(for="unit") Enter the unit type for your habit:
+      dd 
+        input(type="text"
+              id="unit"
+              name="unit"
+              placeholder=" e.g. times, minutes, steps"
+              value=unit)
+        
+    dl
+      dt 
+        label(for="goalUnits") Enter your daily goal units for this habit:
+      dd        
+        input(type="number"      
+              id="goalUnits"
+              name="goalUnits"
+              placeholder="e.g. 10, 20, 0"
+              value=goalUnits)
+    dl 
+      dt 
+        label(for="achievedUnits") Enter the number of units you've achieved today so far:
+      dd
+        input(type="number"
+              id="achievedUnits"
+              name="achievedUnits"
+              placeholder="e.g. 10, 18, 0"
+              value=achievedUnits)
+
+    fieldset.actions
+      input(type="submit" value="Save")
+      a(href="/habits") Cancel

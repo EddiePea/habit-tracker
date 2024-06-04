@@ -1,0 +1,21 @@
+extends layout 
+
+block main 
+  if tracker === undefined
+    p#no_list You don't have any habits to track. Why don't you add one?
+  else 
+    ul#lists 
+      each habit in tracker.habits 
+        li
+          a(href=`/habits/${habit.id}`)
+            h2= habit.getTitle()
+            span.achieved-units= habit.getAchievedUnits()
+            span.unit= habit.getUnit()
+            span.score #{habit.getScore()}%
+    p.total-score 
+      span Today's Total Score: 
+      span= tracker.getTotalScore() + '%' || 0 + '%'
+    
+block headerLinks 
+  .actions 
+    a.add(href="/habits/new") Add new habit

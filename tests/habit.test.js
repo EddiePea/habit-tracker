@@ -166,7 +166,6 @@ describe("Habit class", () => {
     let habit = new Habit("valid string title");
     habit.setGoalUnits(0);
     habit.setAchievedUnits(0);
-    habit.calculateScore();
     habit.setScore();
     expect(habit.getScore()).toBe(100);
   });
@@ -175,7 +174,6 @@ describe("Habit class", () => {
     let habit = new Habit("valid string title");
     habit.setGoalUnits(0);
     habit.setAchievedUnits(10);
-    habit.calculateScore();
     habit.setScore();
     expect(habit.getScore()).toBe(0);
   });
@@ -185,7 +183,6 @@ describe("Habit class", () => {
     let habit = new Habit("valid string title");
     habit.setGoalUnits(10);
     habit.setAchievedUnits(6);
-    habit.calculateScore();
     habit.setScore();
     expect(habit.getScore()).toBe(60);
   });
@@ -194,9 +191,19 @@ describe("Habit class", () => {
     let habit = new Habit("valid string title");
     habit.setGoalUnits(10);
     habit.setAchievedUnits(12);
-    habit.calculateScore();
     habit.setScore();
     expect(habit.getScore()).toBe(100);
   });
-});
 
+  test("toString returns a formatted string", () => {
+    let habit = new Habit("do yoga");
+
+    habit.setGoalUnits(20);
+    habit.setUnit("minutes");
+    habit.setAchievedUnits(18);
+    habit.setScore();
+
+    expect(habit.toString()).toBe("HABIT: do yoga || GOAL: 20 minutes per day || SCORE TODAY: 90%");
+    
+  });
+});

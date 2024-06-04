@@ -1,0 +1,25 @@
+extends layout
+
+block main
+  section#habits
+    header
+      h2= habit.getTitle()
+    
+    ul#habits
+      li I said I would #{habit.getTitle()} for #{habit.getGoalUnits()} #{habit.getUnit()} each day
+      form(action=`/habits/${habit.id}/save` method="post")
+        dl 
+          dt 
+            label(for="achievedUnits") 
+              li Today I've managed the following #{habit.getUnit()}:
+                input(type="text"
+                    name="achievedUnits"
+                    id="achievedUnits"
+                    placeholder=habit.getAchievedUnits()
+                    value=habit.getAchievedUnits())
+        fieldset.actions 
+          button(type="submit") Save
+
+block headerLinks
+  .actions
+    a.list(href="/habits") All Habits
