@@ -579,14 +579,19 @@ form fieldset.actions a:hover {
 }
 
 .notes {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .notes h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 1.5rem;
 }
+
+.notes p.pre {
+  white-space: pre-wrap; /* Ensures line breaks are preserved */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+

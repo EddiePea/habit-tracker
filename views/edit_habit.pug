@@ -7,7 +7,7 @@ block main
     
     ul#habits
       li I said I would #{habit.getTitle()} for #{habit.getGoalUnits()} #{habit.getUnit()} each day
-      form(action=`/habits/${habit.id}/save` method="post")
+      form(action=`/habits/${habit.id}/edit` method="post")
         dl 
           dt 
             label(for="achievedUnits") 
@@ -17,8 +17,17 @@ block main
                     id="achievedUnits"
                     placeholder=habit.getAchievedUnits()
                     value=habit.getAchievedUnits())
-        fieldset.actions 
-          button(type="submit") Save
+        dl 
+          dt 
+            label(for="notes")
+              li Notes:   
+                input(type="text"
+                      name="notes"
+                      id="notes"
+                      placeholder="How did this habit go today?"
+                      value=habit.getNotes())
+          fieldset.actions 
+            button(type="submit") Save
 
 block headerLinks
   .actions

@@ -21,10 +21,10 @@ block main
       li Today I've achieved #{habit.getAchievedUnits()} #{habit.getUnit()} so far 
       span.score Today's score: #{habit.getScore()}% 
     
-    if notes 
-      section.notes 
+    if habit.notes
+      section.notes
         h3 Notes: 
-        p #{habit.getNotes()};
+        p.pre #{habit.getNotes()}
 
     form(action=`/habits/${habit.id}/notes` method="post")
       dl
@@ -34,8 +34,7 @@ block main
           input(type="text"
                 name="notes"
                 id="notes"
-                placeholder="How did this habit go today?"
-                value=notes)
+                placeholder="How did this habit go today?")
       fieldset.actions
         button Add
 

@@ -1,7 +1,7 @@
 extends layout 
 
 block main 
-  if tracker === undefined
+  if tracker.size() <= 0
     p#no_list You don't have any habits to track. Why don't you add one?
   else 
     ul#lists 
